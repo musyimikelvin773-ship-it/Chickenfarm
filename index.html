@@ -1,86 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poultry Solutions | Professional Farm Site</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Paul's Chicken — Premium Improved Kienyeji Poultry</title>
+        <meta name="description" content="Premium improved kienyeji poultry from Kitui — hardy, high-yield birds." />
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Branding stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p6O3p6k3K2+Ykz8cVhQX1+Yh1sKQe0QF5Yf4Z6q9a8K7H9M0x1K5o4Q2JmN8Q9lYF3VYc1Z0a2b3c4d5e6f7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Supabase client (CDN) -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+        <!-- jsPDF for PDF receipts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
 
-    <div class="top-bar">
-        <p>Email: info@yourfarm.com | Call: +254 700 000 000</p>
-    </div>
-
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="logo">POULTRY<span>FARM</span></div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Animal Health</a></li>
-                <li><a href="#">Equipment</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero-banner">
-        <div class="hero-text">
-            <h1>Leading the Way in Poultry Innovation</h1>
-            <p>Comprehensive solutions for modern farmers.</p>
-            <button id="viewCatalogBtn" class="btn-red">View Catalog</button>
-        </div>
-    </section>
-
-    <section id="sectorSection" class="sectors">
-        <h2>Our Main Sectors</h2>
-        <div class="grid-container">
-            <div class="sector-card">
-                <div class="card-icon">🐔</div>
-                <h3>Day Old Chicks</h3>
-                <p>High-quality broilers and layers.</p>
-                <button class="inquire-btn">Inquire</button>
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="brand">
+                    <span class="logo">Paul’s <strong>Chicken</strong></span>
+                </div>
+                <div class="search-wrap">
+                    <input id="siteSearch" type="search" placeholder="Search products, e.g. broilers" aria-label="Search" />
+                </div>
+                <div class="header-actions">
+                    <a class="btn whatsapp" href="https://wa.me/254700000000" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
             </div>
-            <div class="sector-card">
-                <div class="card-icon">💊</div>
-                <h3>Animal Health</h3>
-                <p>Vaccines and nutritional supplements.</p>
-                <button class="inquire-btn">Inquire</button>
-            </div>
-            <div class="sector-card">
-                <div class="card-icon">🚜</div>
-                <h3>Farm Equipment</h3>
-                <p>Automated feeders and drinkers.</p>
-                <button class="inquire-btn">Inquire</button>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <script src="script.js"></script>
+        <!-- Hero (mobile-first) -->
+        <section class="hero" aria-labelledby="heroTitle">
+            <div class="hero-inner">
+                <h1 id="heroTitle">Premium Improved Kienyeji Poultry</h1>
+                <p class="subtitle">Hardy, High-Yield Birds Raised in Kitui</p>
+                <div class="hero-cta">
+                    <button id="shopNow" class="btn primary">Shop Now</button>
+                </div>
+            </div>
+        </section>
 
-    <footer class="footer">
-        <div class="footer-grid">
-            <div>
-                <h4>About Us</h4>
-                <p>Your farm's mission and commitment to quality.</p>
+        <!-- Quick categories -->
+        <section class="categories" aria-label="Quick categories">
+            <div class="categories-inner">
+                <button class="cat">
+                    <div class="cat-icon">🥚</div>
+                    <div class="cat-label">Fertilized Eggs</div>
+                </button>
+                <button class="cat">
+                    <div class="cat-icon">�</div>
+                    <div class="cat-label">Day-Old Chicks</div>
+                </button>
+                <button class="cat">
+                    <div class="cat-icon">🐥</div>
+                    <div class="cat-label">Month-Old Pullets</div>
+                </button>
+                <button class="cat">
+                    <div class="cat-icon">�</div>
+                    <div class="cat-label">Mature Birds</div>
+                </button>
             </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Sustainability</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <p>Nairobi, Kenya</p>
-                <p>Phone: +254...</p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-</body>
+        <!-- Product grid -->
+        <section class="products" aria-label="Products">
+            <div class="products-inner">
+                <header class="products-header">
+                    <h2>Shop from Kitui Farm</h2>
+                    <div class="products-controls">
+                        <select id="sortSelect" aria-label="Sort products">
+                            <option value="popular">Most popular</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                        </select>
+                    </div>
+                </header>
+
+                <div id="productGrid" class="product-grid">
+                    <!-- Products injected by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust bar -->
+        <section class="trust-bar" aria-hidden="false">
+            <div class="trust-inner">
+                <div class="trust-item">
+                    <div class="trust-icon">🩺</div>
+                    <div class="trust-text">100% Vaccinated</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-text">Secure M-Pesa Payment</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🚚</div>
+                    <div class="trust-text">Countrywide Delivery</div>
+                </div>
+            </div>
+        </section>
+
+                <!-- The Paul's Chicken Story -->
+                <section class="story-section container" aria-labelledby="storyTitle">
+                    <h2 id="storyTitle">The Paul’s Chicken Story</h2>
+
+                    <p class="story-intro"><strong>Built for the Village, Bred for the Market</strong><br>
+                    At The Paul’s Chicken Farm, we don’t just raise poultry; we breed resilience. Nestled in the heart of Kitui County, our farm was born from a simple mission: to provide Kenyan farmers and families with Improved Kienyeji stock that actually thrives. We combine the traditional hardiness of local birds with modern growth performance.</p>
+
+                    <div class="pillars-grid" role="list">
+                        <div class="pillar" role="listitem">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <!-- location pin svg -->
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" fill="#1b4332"/><circle cx="12" cy="9" r="2.2" fill="#fefae0"/></svg>
+                            </div>
+                            <h3>Kitui Hardened</h3>
+                            <p>Our birds are raised in the tough, semi-arid climate of Kitui. If they can thrive here, they will flourish anywhere in Kenya.</p>
+                        </div>
+
+                        <div class="pillar" role="listitem">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <!-- syringe svg -->
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="14" width="20" height="2" rx="1" fill="#1b4332"/><path d="M19 3l2 2-6 6-2-2 6-6z" fill="#bc6c25"/></svg>
+                            </div>
+                            <h3>Bio-Secure &amp; Vaccinated</h3>
+                            <p>We follow a strict veterinary-approved vaccination schedule. When you buy from Paul’s, you aren't just buying a bird; you’re buying peace of mind.</p>
+                        </div>
+
+                        <div class="pillar" role="listitem">
+                            <div class="pillar-icon" aria-hidden="true">
+                                <!-- growth chart svg -->
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="4" height="18" rx="1" fill="#bc6c25"/><rect x="10" y="9" width="4" height="12" rx="1" fill="#1b4332"/><rect x="17" y="13" width="4" height="8" rx="1" fill="#fefae0" stroke="#1b4332"/></svg>
+                            </div>
+                            <h3>Dual-Purpose Excellence</h3>
+                            <p>Whether you are looking for heavy meat birds or high-frequency egg layers, our improved breeds are selected for maximum profitability.</p>
+                        </div>
+                    </div>
+
+                    <div class="vision">
+                        <h3>More Than a Farm</h3>
+                        <p>From our family to yours, we are committed to sustainable farming. By supporting The Paul’s Chicken Farm, you are supporting a vision of food security and agricultural innovation in Eastern Kenya. We aren't just your suppliers; we are your partners in poultry success.</p>
+                        <p class="signature">Quality Guaranteed - The Paul’s Chicken Team</p>
+                    </div>
+                </section>
+
+                    <!-- Customer Success Stories -->
+                    <section class="success-section container" aria-labelledby="successTitle">
+                        <h2 id="successTitle">Customer Success Stories</h2>
+                        <p class="muted">Real results from farmers using our improved Kienyeji stock.</p>
+
+                        <div class="success-grid">
+                            <article class="success-card">
+                                <div class="quote-icon" aria-hidden="true">“</div>
+                                <div class="card-head">
+                                    <h3>High Survival Rate</h3>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                                <p class="card-text">"98% survival on my first batch of 200 chicks. Paul’s advice on brooding was a lifesaver!"</p>
+                                <div class="card-foot">
+                                    <div class="author">— Mama Jane, Kitui Central</div>
+                                    <div class="badge verified">Verified Farmer</div>
+                                </div>
+                            </article>
+
+                            <article class="success-card">
+                                <div class="quote-icon" aria-hidden="true">“</div>
+                                <div class="card-head">
+                                    <h3>Quality Hatching Eggs</h3>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                                <p class="card-text">"The hatchability is unmatched. 26 out of 30 eggs hatched successfully in my solar incubator."</p>
+                                <div class="card-foot">
+                                    <div class="author">— David K., Makueni</div>
+                                    <div class="badge verified">Verified Farmer</div>
+                                </div>
+                            </article>
+
+                            <article class="success-card">
+                                <div class="quote-icon" aria-hidden="true">“</div>
+                                <div class="card-head">
+                                    <h3>Reliable Delivery</h3>
+                                    <div class="stars">★★★★★</div>
+                                </div>
+                                <p class="card-text">"Ordered mature birds for a ceremony in Nairobi. They arrived healthy and well-crated. Highly recommend!"</p>
+                                <div class="card-foot">
+                                    <div class="author">— Sarah M., Kilimani</div>
+                                    <div class="badge verified">Verified Farmer</div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+            <!-- (Removed duplicate Testimonials section — Customer Success Stories present) -->
+
+            <!-- Contact / Newsletter -->
+            <section class="contact container" id="contactSection" aria-labelledby="contactTitle">
+                <h2 id="contactTitle">Get in touch</h2>
+                <div class="contact-grid">
+                    <form id="contactForm" class="contact-form">
+                        <label>Full name<input name="name" required></label>
+                        <label>Phone<input name="phone" required placeholder="07XXXXXXXX"></label>
+                        <label>Message<textarea name="message" rows="4" required></textarea></label>
+                        <div class="contact-actions"><button type="submit" class="btn primary">Send Message</button></div>
+                    </form>
+                    <div class="newsletter">
+                        <h3>Sign up for farm updates</h3>
+                        <p class="muted">Receive stock alerts and special offers via email.</p>
+                        <form id="newsletterForm" class="newsletter-form">
+                            <input name="nname" placeholder="Your name">
+                            <input name="nemail" type="email" placeholder="Email address">
+                            <button class="btn primary" type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+                <!-- Footer (Agro-Boutique style inspired by Osho layout) -->
+                <footer class="site-footer">
+                    <div class="footer-top">
+                        <div class="footer-col identity">
+                            <div class="logo">Paul’s <strong>Chicken</strong></div>
+                            <ul class="contact-list">
+                                <li><i class="fas fa-map-marker-alt"></i> Kitui, Kenya</li>
+                                <li><i class="fas fa-phone"></i> Call: +254 700 000 000</li>
+                                <li><i class="fab fa-whatsapp"></i> WhatsApp: +254 700 000 000</li>
+                                <li><i class="fas fa-envelope"></i> Email: info@paulschicken.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col map">
+                            <h4>Our Farm Location</h4>
+                            <div class="map-embed">
+                                <iframe src="https://www.google.com/maps?q=Kitui,+Kenya&output=embed" width="100%" height="200" style="border:0;border-radius:15px" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="footer-col links">
+                            <h4>Useful Links</h4>
+                            <ul class="useful-links">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Poultry Products</a></li>
+                                <li><a href="#">Fertilized Eggs</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col newsletter-col">
+                            <h4>Get Poultry Tips &amp; Offers</h4>
+                            <form id="footerNewsletter" class="footer-newsletter">
+                                <input name="fname" placeholder="Your name" />
+                                <input name="femail" type="email" placeholder="Email address" />
+                                <button class="btn submit dark">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram" class="social"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="TikTok" class="social"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                        <div class="copyright">© 2026 The Paul’s Chicken Farm. Quality Kienyeji from Kitui.</div>
+                    </div>
+                </footer>
+
+        <!-- App scripts -->
+        <script src="script.js"></script>
+    </body>
 </html>
