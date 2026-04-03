@@ -3,49 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresh Poultry Farm | Our Products</title>
+    <title>Paul's Chicken Farm — Fresh Poultry & Chicks</title>
+    <meta name="description" content="Paul's Chicken Farm — Quality poultry and chicks raised with care. Order broilers, layers, and get farm-fresh service." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+</header>
 
     <header>
-        <nav class="navbar">
-            <div class="logo">PoultryDirect</div>
+        <nav class="navbar container">
+            <a class="logo" href="#">Paul's Chicken</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Fresh From Our Farm to Your Table</h1>
-        <p>Quality poultry raised with care and sustainability.</p>
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1>Fresh From Our Farm to Your Table</h1>
+            <p>Healthy, ethically-raised poultry and chicks delivered with care. Trusted by farmers and families across the region.</p>
+            <div class="hero-cta">
+                <a class="btn primary" href="#products">Shop Chicks</a>
+                <a class="btn outline" href="mailto:orders@paulschicken.example?subject=Order%20Inquiry">Contact Us</a>
+            </div>
+        </div>
+        <img class="hero-img" src="https://source.unsplash.com/1600x900/?chicken,farm" alt="Chickens on a farm">
     </section>
 
-    <section id="products" class="product-section">
+    <section id="products" class="product-section container">
         <h2>Our Premium Poultry</h2>
+        <p class="lead">We supply healthy day-old broilers and high-yield layers. Below are our most popular products — click Inquire to request pricing & delivery.</p>
+
         <div class="product-grid">
-            
-            <div class="product-card">
-                <div class="product-image-placeholder">Broiler Image</div>
-                <h3>Day-Old Broilers</h3>
-                <p>Fast-growing, healthy chicks perfect for meat production.</p>
-                <span class="price">Ksh 85.00 / chick</span>
-                <button class="order-btn">Inquire Now</button>
-            </div>
+            <article class="product-card">
+                <img src="https://source.unsplash.com/800x600/?chick,broiler" alt="Day-old broiler chicks">
+                <div class="card-body">
+                    <h3>Day-Old Broilers</h3>
+                    <p>Fast-growing, healthy chicks perfect for meat production and quick returns.</p>
+                    <div class="card-foot">
+                        <span class="price">Ksh 85.00 / chick</span>
+                        <button class="btn primary order-btn" data-product="Day-Old Broilers">Inquire</button>
+                    </div>
+                </div>
+            </article>
 
-            <div class="product-card">
-                <div class="product-image-placeholder">Layer Image</div>
-                <h3>High-Yield Layers</h3>
-                <p>Consistent egg producers designed for long-term output.</p>
-                <span class="price">Ksh 110.00 / chick</span>
-                <button class="order-btn">Inquire Now</button>
-            </div>
+            <article class="product-card">
+                <img src="https://source.unsplash.com/800x600/?chicken,eggs" alt="Layer hens and eggs">
+                <div class="card-body">
+                    <h3>High-Yield Layers</h3>
+                    <p>Consistent egg producers with strong health and feed conversion for long-term output.</p>
+                    <div class="card-foot">
+                        <span class="price">Ksh 110.00 / chick</span>
+                        <button class="btn primary order-btn" data-product="High-Yield Layers">Inquire</button>
+                    </div>
+                </div>
+            </article>
 
+            <article class="product-card">
+                <img src="https://source.unsplash.com/800x600/?feed,farm" alt="Feed and farm supplies">
+                <div class="card-body">
+                    <h3>Farm Supplies</h3>
+                    <p>Quality feed and supplies to keep your flock healthy and productive.</p>
+                    <div class="card-foot">
+                        <span class="price">Varies</span>
+                        <button class="btn primary order-btn" data-product="Farm Supplies">Inquire</button>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
+
+    <section id="about" class="about container">
+        <h2>About Paul</h2>
+        <p>Paul's Chicken Farm started as a small family business focused on quality and animal welfare. Today we partner with farmers to provide healthy chicks, advice, and reliable delivery.</p>
+    </section>
+
+    <section id="contact" class="contact container">
+        <h2>Get in touch</h2>
+        <p>Ready to order or have questions? Send us a message or call us.</p>
+        <div class="contact-actions">
+            <a class="btn primary" href="mailto:orders@paulschicken.example?subject=Order%20Inquiry">Email Orders</a>
+            <a class="btn outline" href="tel:+254700000000">Call +254 700 000 000</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© Paul's Chicken Farm — Quality poultry since 20XX</p>
+            <p class="muted">Follow us on social media for tips and stock updates.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="inquireModal" class="modal" aria-hidden="true">
+        <div class="modal-panel">
+            <button class="modal-close" aria-label="Close modal">✕</button>
+            <h3>Inquire about <span id="modalProduct">product</span></h3>
+            <p>Please provide your name, phone, and quantity. We'll respond quickly.</p>
+            <form id="inquiryForm">
+                <label>Full name <input name="name" required></label>
+                <label>Phone <input name="phone" required></label>
+                <label>Quantity <input name="quantity" type="number" min="1" required></label>
+                <label>Email (optional) <input name="email" type="email"></label>
+                <div class="modal-actions">
+                    <button type="submit" class="btn primary">Send Inquiry</button>
+                    <button type="button" class="btn outline modal-close">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle && navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Inquiry modal logic
+        const modal = document.getElementById('inquireModal');
+        const modalProduct = document.getElementById('modalProduct');
+        const orderBtns = document.querySelectorAll('.order-btn');
+        const modalCloseBtns = document.querySelectorAll('.modal-close');
+        const inquiryForm = document.getElementById('inquiryForm');
+
+        function openModal(product) {
+            modalProduct.textContent = product;
+            modal.setAttribute('aria-hidden', 'false');
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            modal.setAttribute('aria-hidden', 'true');
+            modal.classList.remove('open');
+        }
+
+        orderBtns.forEach(b => b.addEventListener('click', (e) => {
+            const p = e.currentTarget.dataset.product || 'product';
+            openModal(p);
+        }));
+
+        modalCloseBtns.forEach(b => b.addEventListener('click', closeModal));
+
+        inquiryForm && inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(inquiryForm);
+            const body = Array.from(data.entries()).map(([k,v]) => `${k}: ${v}`).join('%0A');
+            // Open mail client with prefilled message (simple, avoids backend)
+            const subject = encodeURIComponent('Product Inquiry - ' + modalProduct.textContent);
+            const mailto = `mailto:orders@paulschicken.example?subject=${subject}&body=${body}`;
+            window.location.href = mailto;
+            closeModal();
+        });
+
+        // Close modal on outside click
+        modal && modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
 
 </body>
 </html>
