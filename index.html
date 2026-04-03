@@ -34,6 +34,7 @@
                             </div>
                         </div>
                         <div class="hero-right">
+                            <img class="hero-side-photo" src="https://source.unsplash.com/600x600/?farmer,farm" alt="Farmer working">
                             <div class="contact-card">
                                 <h4>Speak to an agent</h4>
                                 <p class="muted">Call or email our customer care team for orders & support</p>
@@ -71,6 +72,16 @@
                         <div class="stat"><strong class="count" data-target="12">0</strong><span>Countries served</span></div>
                         <div class="stat"><strong class="count" data-target="120">0</strong><span>Products</span></div>
                         <div class="stat"><strong class="count" data-target="500000">0</strong><span>Customers</span></div>
+                    </div>
+                </section>
+
+                <section class="partners container">
+                    <h3>Our partners & clients</h3>
+                    <div class="partners-grid">
+                        <img src="https://source.unsplash.com/300x120/?company,logo" alt="Partner 1">
+                        <img src="https://source.unsplash.com/300x120/?company,office" alt="Partner 2">
+                        <img src="https://source.unsplash.com/300x120/?warehouse,logo" alt="Partner 3">
+                        <img src="https://source.unsplash.com/300x120/?tractor,logo" alt="Partner 4">
                     </div>
                 </section>
 
@@ -170,6 +181,38 @@
         modal && modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
+            // Animate stat counters
+            const counters = document.querySelectorAll('.count');
+            function animateCounters(){
+                counters.forEach(c => {
+                    const target = +c.getAttribute('data-target');
+                    let current = 0;
+                    const step = Math.ceil(target / 120);
+                    const timer = setInterval(()=>{
+                        current += step;
+                        if(current >= target){
+                            c.textContent = target.toLocaleString();
+                            clearInterval(timer);
+                        } else {
+                            c.textContent = current.toLocaleString();
+                        }
+                    },12);
+                });
+            }
+            // Run when visible
+            let statsRun = false;
+            function onScrollCheck(){
+                if(statsRun) return;
+                const stats = document.querySelector('.stats');
+                if(!stats) return;
+                const rect = stats.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 100){
+                    animateCounters(); statsRun = true;
+                    window.removeEventListener('scroll', onScrollCheck);
+                }
+            }
+            window.addEventListener('scroll', onScrollCheck);
+            window.addEventListener('load', onScrollCheck);
     </script>
 
 </body>
